@@ -1,0 +1,6 @@
+[package]
+name = "universal-sudoku"
+version = "0.0.1"
+authors = ["Felix Kohlgrüber <felix.kohlgrueber@gmail.com>"]
+
+[dependencies]
