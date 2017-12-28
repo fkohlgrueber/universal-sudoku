@@ -108,6 +108,11 @@ mod tests {
     use super::*;
 
     #[test]
+    fn failing_test() {
+        assert!(false);
+    }
+
+    #[test]
     fn new_var_sizes() {
         for i in 2..11 {
             assert!(SudokuField::new(i).is_ok());
