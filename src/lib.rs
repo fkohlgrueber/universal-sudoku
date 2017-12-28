@@ -71,6 +71,15 @@ impl SudokuField {
         }
         s
     }
+
+    pub fn is_complete(&self) -> bool {
+        for i in self.fields.iter() {
+            if let None = *i {
+                return false;
+            }
+        }
+        return true;
+    }
 }
 
 #[cfg(test)]
@@ -149,5 +158,18 @@ mod tests {
 | 15  . 16  . |  .  .  .  . |  .  .  .  . |  .  .  . 15 |
 └─────────────┴─────────────┴─────────────┴─────────────┘\n");
         assert_eq!(exp, s.pretty_format());
+    }
+
+    #[test]
+    fn uncomplete() {
+        let s = SudokuField::new(2).unwrap();
+        assert!(!s.is_complete());
+    }
+
+    #[test]
+    fn complete() {
+        let mut s = SudokuField::new(2).unwrap();
+        s.set_fields(vec![1; 16]);
+        assert!(s.is_complete());
     }
 }
