@@ -1,4 +1,4 @@
-#[derive(Debug)]
+
 pub struct SudokuField {
     size_param: usize,
     edge_size: usize,
@@ -36,36 +36,6 @@ impl SudokuField {
 
     fn get_at(&self, x: usize, y: usize) -> Option<u8> {
         self.fields[self.at(x, y)]
-    }
-
-    pub fn format(&self) -> String {
-        let mut s = String::new();
-        for line in 0..self.edge_size {
-            for col in 0..self.edge_size {
-                match self.get_at(col, line) {
-                    Some(x) => s.push_str(self.format_cell(x).as_str()),
-                    None => s.push_str(self.format_empty_cell().as_str())
-                }
-            }
-            s.push('\n')
-        }
-        s
-    }
-
-    fn format_cell(&self, x: u8) -> String {
-        match self.size_param {
-            2 ... 3 => format!("{:1} ", x),
-            4 ... 9 => format!("{:2} ", x),
-            _ => format!("{:3} ", x)
-        }
-    }
-
-    fn format_empty_cell(&self) -> String {
-        match self.size_param {
-            2 ... 3 => String::from(". "),
-            4 ... 9 => String::from(" . "),
-            _ => String::from("  . ")
-        }
     }
 
     pub fn pretty_format(&self) -> String {
@@ -106,11 +76,6 @@ impl SudokuField {
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn failing_test() {
-        assert!(false);
-    }
 
     #[test]
     fn new_var_sizes() {
