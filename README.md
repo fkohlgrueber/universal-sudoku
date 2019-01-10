@@ -4,3 +4,4 @@
 
 # universal-sudoku
 
+[test](../../index.html)
